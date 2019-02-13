@@ -5,7 +5,7 @@ const DepartmentArea = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  margin-bottom: 20px;
+  margin-bottom: 4rem;
 `;
 
 export default DepartmentArea;

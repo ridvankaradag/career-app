@@ -9,13 +9,12 @@ import JobHeader from '../../components/JobHeader/JobHeader';
 import JobPlace from '../../components/JobPlace/JobPlace';
 import CompanyHeader from '../../components/CompanyHeader/CompanyHeader';
 import CompanyDescription from '../../components/CompanyDescription/CompanyDescription';
-import {Link} from "react-router-dom";
 
 class Home extends Component {
     render() {
         return (
             <div className="Home">
-                <Header headerColor="blue" backgroundImage="https://jobs.emcasa.com/static/team-bb9f0ac327b6b8e2a6036003840f6c55.jpg">
+                <Header>
                     <Layout>
                         <CompanyHeader>Trabalhe na EmCasa</CompanyHeader>
                         <CompanyDescription>
@@ -27,25 +26,15 @@ class Home extends Component {
                     <DepartmentArea>
                         <DepartmentHeader>Product</DepartmentHeader>
                         <JobList>
-                            <Job href="/data-engineer">
+                            <Job to="/data-engineer">
                                 <JobHeader>Data Engineer</JobHeader>
                                 <JobPlace>Remote</JobPlace>
                             </Job>
-                            <Job href="/data-engineer">
+                            <Job to="/data-engineer">
                                 <JobHeader>Data Engineer</JobHeader>
                                 <JobPlace>Remote</JobPlace>
                             </Job>
-                            <Link to='/5'>Rendering with React</Link>
-                            <Job href="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                        </JobList>
-                    </DepartmentArea>
-                    <DepartmentArea>
-                        <DepartmentHeader>Product</DepartmentHeader>
-                        <JobList>
-                            <Job href="/data-engineer">
+                            <Job to="/data-engineer">
                                 <JobHeader>Data Engineer</JobHeader>
                                 <JobPlace>Remote</JobPlace>
                             </Job>
@@ -54,19 +43,28 @@ class Home extends Component {
                     <DepartmentArea>
                         <DepartmentHeader>Product</DepartmentHeader>
                         <JobList>
-                            <Job href="/data-engineer">
+                            <Job to="/data-engineer">
                                 <JobHeader>Data Engineer</JobHeader>
                                 <JobPlace>Remote</JobPlace>
                             </Job>
-                            <Job href="/data-engineer">
+                        </JobList>
+                    </DepartmentArea>
+                    <DepartmentArea>
+                        <DepartmentHeader>Product</DepartmentHeader>
+                        <JobList>
+                            <Job to="/data-engineer">
                                 <JobHeader>Data Engineer</JobHeader>
                                 <JobPlace>Remote</JobPlace>
                             </Job>
-                            <Job href="/data-engineer">
+                            <Job to="/data-engineer">
                                 <JobHeader>Data Engineer</JobHeader>
                                 <JobPlace>Remote</JobPlace>
                             </Job>
-                            <Job href="/data-engineer">
+                            <Job to="/data-engineer">
+                                <JobHeader>Data Engineer</JobHeader>
+                                <JobPlace>Remote</JobPlace>
+                            </Job>
+                            <Job to="/data-engineer">
                                 <JobHeader>Data Engineer</JobHeader>
                                 <JobPlace>Remote</JobPlace>
                             </Job>
