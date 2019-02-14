@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
-const Job = styled(Link)`
+const Box = styled(Link)`
     color: #000;
     cursor: pointer;
     display: block;
@@ -33,4 +33,4 @@ const Job = styled(Link)`
     }
 `;
 
-export default Job;
+export default Box;

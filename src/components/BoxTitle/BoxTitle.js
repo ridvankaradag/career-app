@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const JobHeader = styled.h3`
+const BoxTitle = styled.h3`
   font-weight: 300;
 `;
 
-export default JobHeader;
+export default BoxTitle;

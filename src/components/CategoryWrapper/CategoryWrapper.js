@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const DepartmentArea = styled.div`
+const CategoryWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -8,4 +8,4 @@ const DepartmentArea = styled.div`
   margin-bottom: 4rem;
 `;
 
-export default DepartmentArea;
+export default CategoryWrapper;

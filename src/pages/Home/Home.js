@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header';
 import Layout from '../../components/Layout/Layout'
-import DepartmentArea from '../../components/DepartmentArea/DepartmentArea';
-import DepartmentHeader from '../../components/DepartmentHeader/DepartmentHeader';
-import JobList from '../../components/JobList/JobList';
-import Job from '../../components/Job/Job';
-import JobHeader from '../../components/JobHeader/JobHeader';
-import JobPlace from '../../components/JobPlace/JobPlace';
-import CompanyHeader from '../../components/CompanyHeader/CompanyHeader';
-import CompanyDescription from '../../components/CompanyDescription/CompanyDescription';
+import CategoryWrapper from '../../components/CategoryWrapper/CategoryWrapper';
+import CategoryHeader from '../../components/CategoryHeader/CategoryHeader';
+import BoxWrapper from '../../components/BoxWrapper/BoxWrapper';
+import Box from '../../components/Box/Box';
+import BoxTitle from '../../components/BoxTitle/BoxTitle';
+import BoxSubTitle from '../../components/BoxSubtitle/BoxSubTitle';
+import HeaderText from '../../components/HeaderText/HeaderText';
+import HeaderDescription from '../../components/HeaderDescription/HeaderDescription';
 
 class Home extends Component {
     render() {
@@ -16,60 +16,60 @@ class Home extends Component {
             <div className="Home">
                 <Header>
                     <Layout>
-                        <CompanyHeader>Trabalhe na EmCasa</CompanyHeader>
-                        <CompanyDescription>
+                        <HeaderText>Trabalhe na EmCasa</HeaderText>
+                        <HeaderDescription>
                             Estamos revolucionando o mercado de real estate no Brasil. Temos oportunidades para trabalho remoto ou nas nossas sedes no RJ e SP. Conheça mais:
-                        </CompanyDescription>
+                        </HeaderDescription>
                     </Layout>
                 </Header>
                 <Layout>
-                    <DepartmentArea>
-                        <DepartmentHeader>Product</DepartmentHeader>
-                        <JobList>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                        </JobList>
-                    </DepartmentArea>
-                    <DepartmentArea>
-                        <DepartmentHeader>Product</DepartmentHeader>
-                        <JobList>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                        </JobList>
-                    </DepartmentArea>
-                    <DepartmentArea>
-                        <DepartmentHeader>Product</DepartmentHeader>
-                        <JobList>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                            <Job to="/data-engineer">
-                                <JobHeader>Data Engineer</JobHeader>
-                                <JobPlace>Remote</JobPlace>
-                            </Job>
-                        </JobList>
-                    </DepartmentArea>
+                    <CategoryWrapper>
+                        <CategoryHeader>Product</CategoryHeader>
+                        <BoxWrapper>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                        </BoxWrapper>
+                    </CategoryWrapper>
+                    <CategoryWrapper>
+                        <CategoryHeader>Product</CategoryHeader>
+                        <BoxWrapper>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                        </BoxWrapper>
+                    </CategoryWrapper>
+                    <CategoryWrapper>
+                        <CategoryHeader>Product</CategoryHeader>
+                        <BoxWrapper>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                            <Box to="/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                        </BoxWrapper>
+                    </CategoryWrapper>
                 </Layout>
             </div>
         );

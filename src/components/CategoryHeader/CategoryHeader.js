@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const DepartmentHeader = styled.h2`
+const CategoryHeader = styled.h2`
     background-color: #f50057;
     color: #fff;
     padding: 5px 10px;
@@ -8,4 +8,4 @@ const DepartmentHeader = styled.h2`
     font-weight: 400;
 `;
 
-export default DepartmentHeader;
+export default CategoryHeader;
