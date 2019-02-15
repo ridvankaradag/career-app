@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, Fragment} from 'react';
 import Header from '../../components/Header/Header';
 import Layout from '../../components/Layout/Layout'
 import CategoryWrapper from '../../components/CategoryWrapper/CategoryWrapper';
@@ -13,7 +13,7 @@ import HeaderDescription from '../../components/HeaderDescription/HeaderDescript
 class Home extends Component {
     render() {
         return (
-            <div className="Home">
+            <Fragment>
                 <Header>
                     <Layout>
                         <HeaderText>Trabalhe na EmCasa</HeaderText>
@@ -26,24 +26,15 @@ class Home extends Component {
                     <CategoryWrapper>
                         <CategoryHeader>Product</CategoryHeader>
                         <BoxWrapper>
-                            <Box to="/data-engineer">
+                            <Box to="job/data-engineer">
                                 <BoxTitle>Data Engineer</BoxTitle>
                                 <BoxSubTitle>Remote</BoxSubTitle>
                             </Box>
-                            <Box to="/data-engineer">
+                            <Box to="job/data-engineer">
                                 <BoxTitle>Data Engineer</BoxTitle>
                                 <BoxSubTitle>Remote</BoxSubTitle>
                             </Box>
-                            <Box to="/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                        </BoxWrapper>
-                    </CategoryWrapper>
-                    <CategoryWrapper>
-                        <CategoryHeader>Product</CategoryHeader>
-                        <BoxWrapper>
-                            <Box to="/data-engineer">
+                            <Box to="job/data-engineer">
                                 <BoxTitle>Data Engineer</BoxTitle>
                                 <BoxSubTitle>Remote</BoxSubTitle>
                             </Box>
@@ -52,26 +43,35 @@ class Home extends Component {
                     <CategoryWrapper>
                         <CategoryHeader>Product</CategoryHeader>
                         <BoxWrapper>
-                            <Box to="/data-engineer">
+                            <Box to="job/data-engineer">
                                 <BoxTitle>Data Engineer</BoxTitle>
                                 <BoxSubTitle>Remote</BoxSubTitle>
                             </Box>
-                            <Box to="/data-engineer">
+                        </BoxWrapper>
+                    </CategoryWrapper>
+                    <CategoryWrapper>
+                        <CategoryHeader>Product</CategoryHeader>
+                        <BoxWrapper>
+                            <Box to="job/data-engineer">
                                 <BoxTitle>Data Engineer</BoxTitle>
                                 <BoxSubTitle>Remote</BoxSubTitle>
                             </Box>
-                            <Box to="/data-engineer">
+                            <Box to="job/data-engineer">
                                 <BoxTitle>Data Engineer</BoxTitle>
                                 <BoxSubTitle>Remote</BoxSubTitle>
                             </Box>
-                            <Box to="/data-engineer">
+                            <Box to="job/data-engineer">
+                                <BoxTitle>Data Engineer</BoxTitle>
+                                <BoxSubTitle>Remote</BoxSubTitle>
+                            </Box>
+                            <Box to="job/data-engineer">
                                 <BoxTitle>Data Engineer</BoxTitle>
                                 <BoxSubTitle>Remote</BoxSubTitle>
                             </Box>
                         </BoxWrapper>
                     </CategoryWrapper>
                 </Layout>
-            </div>
+            </Fragment>
         );
     }
 }

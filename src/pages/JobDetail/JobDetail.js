@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component, Fragment} from "react";
 import Header from "../../components/Header/Header";
 import Layout from "../../components/Layout/Layout";
 import HeaderTextLink from "../../components/HeaderTextLink/HeaderTextLink";
@@ -13,7 +13,7 @@ class JobDetail extends Component {
     render(props) {
         console.log(this.props.match.params.id);
         return (
-            <div className="job_detail">
+            <Fragment>
                 <Header>
                     <Layout>
                         <HeaderTextLink to="/">
@@ -78,7 +78,7 @@ class JobDetail extends Component {
                         <Button href="mailto:a@b.com">Apply</Button>
                     </PageFooter>
                 </Layout>
-            </div>
+            </Fragment>
         )
     }
 }
