@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 import Header from "../../../components/Header/Header";
 import Layout from "../../../components/Layout/Layout";
 import HeaderText from "../../../components/HeaderText/HeaderText";
@@ -10,6 +10,13 @@ import FormDefault from "../../../components/FormDefault/FormDefault";
 import TableDefault from "../../../components/TableDefault/TableDefault";
 
 function Departments() {
+
+    const [departments, setDepartments] = useState([{id: 1, name: 'Engineering' }, {id: 2, name: 'Product'}]);
+
+    const addDepartment = (event) => {
+        event.preventDefault();
+        console.log(event);
+    };
 
     return (
         <Fragment>
@@ -23,7 +30,7 @@ function Departments() {
             <Layout>
                 <FlexWrapper>
                     <Column gap="5" rightSpace="1">
-                        <FormDefault>
+                        <FormDefault onSubmit={event => addDepartment()}>
                             <FlexWrapper>
                                 <FormInputDefault type="text" placeholder="Department Name"/>
                             </FlexWrapper>
@@ -42,14 +49,14 @@ function Departments() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Engineering</td>
-                                        <td>Edit - Remove</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Engineering</td>
-                                        <td>Edit - Remove</td>
-                                    </tr>
+                                {
+                                    departments.map((department) => (
+                                        <tr key={department.id}>
+                                            <td>{department.name}</td>
+                                            <td><span>Edit</span> - <span>Remove</span></td>
+                                        </tr>
+                                    ))
+                                }
                                 </tbody>
                             </TableDefault>
                         </FlexWrapper>

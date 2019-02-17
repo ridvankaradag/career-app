@@ -5,7 +5,7 @@ const FormInputDefault = styled.input`
     margin: 0;
     padding: 5px 10px;
     color: inherit;
-    width: calc(100% - 20px);
+    width: 100%;
     font-family: inherit;
     font-size: 1.2rem;
     font-weight: inherit;
