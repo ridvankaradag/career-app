@@ -18,7 +18,7 @@ const Router = () => (
             <Route path='/dashboard' component={Dashboard} exact={true}/>
             <Route path='/dashboard/departments' component={Departments} exact={true}/>
             <Route path='/dashboard/jobs' component={JobList} exact={true}/>
-            <Route path='/dashboard/jobs/new' component={CreateJob} exact={true}/>
+            <Route path='/dashboard/jobs/create' component={CreateJob} exact={true}/>
             <Route path='/dashboard/register' component={Register} exact={true}/>
             <Route path='/dashboard/login' component={Login} exact={true}/>
         </Switch>
