@@ -25,6 +25,7 @@ function Departments() {
             const updatedDepartments = [...departments];
             updatedDepartments.filter((x) => x.id === update)[0].name = value;
             setDepartments(updatedDepartments);
+            setUpdate(null);
         }
         setValue("");
     };
