@@ -1,4 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
+import { EditorState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
+import '../member.css'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Header from "../../../components/Header/Header";
 import Layout from "../../../components/Layout/Layout";
 import HeaderText from "../../../components/HeaderText/HeaderText";
@@ -12,8 +18,18 @@ import FormInputOption from "../../../components/FormInputOption/FormInputOption
 
 function CreateJob() {
 
+    const [job, setJob] = useState(null);
+    const [title, setTitle] = useState('');
+    const [department, setDepartment] = useState('');
+    const [detail, setDetail] = useState(EditorState.createEmpty());
+
     const handleSubmit = (e) => {
         e.preventDefault();
+    };
+
+    const editorChange = (editorState) => {
+        setDetail(editorState);
+        console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     };
 
     return (
@@ -30,16 +46,27 @@ function CreateJob() {
                     <Column gap={12} rightSpace={'5px'}>
                         <FormDefault onSubmit={handleSubmit}>
                             <FlexWrapper>
-                                <FormInputDefault type="text" placeholder="Title" required/>
+                                <FormInputDefault type="text" placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} required/>
                             </FlexWrapper>
                             <FlexWrapper>
-                                <FormInputSelect>
-                                    <FormInputOption>Choose Department</FormInputOption>
-                                    <FormInputOption>Engineering</FormInputOption>
-                                    <FormInputOption>Product</FormInputOption>
-                                    <FormInputOption>Sales & Marketing</FormInputOption>
+                                <FormInputSelect defaultValue={department} onChange={e => setDepartment(e.target.value)} required>
+                                    <FormInputOption value={0}>Choose Department</FormInputOption>
+                                    <FormInputOption value={1}>Engineering</FormInputOption>
+                                    <FormInputOption value={2}>Product</FormInputOption>
+                                    <FormInputOption value={3}>Sales & Marketing</FormInputOption>
                                 </FormInputSelect>
                             </FlexWrapper>
+                                <Editor
+                                    editorState={detail}
+                                    toolbarClassName="draft_editor_toolbar"
+                                    wrapperClassName="draft_editor_wrapper"
+                                    editorClassName="draft_editor_text_area"
+                                    onEditorStateChange={editorChange}
+                                    toolbar={{
+                                        options: ['inline', 'blockType', 'list', 'textAlign', 'link', 'emoji'],
+                                    }}
+                                    stripPastedStyles={true}
+                                />
                             <FlexWrapper justifyContent="flex-end">
                                 <FormInputButton type="submit" value={null === null ? 'Create' : 'Update'} />
                             </FlexWrapper>

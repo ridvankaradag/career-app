@@ -3,8 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "draft-js": "^0.10.5",
+    "draftjs-to-html": "^0.8.4",
+    "html-to-draftjs": "^1.4.0",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
+    "react-draft-wysiwyg": "^1.13.1",
     "react-scripts": "2.1.5",
     "styled-components": "^4.1.3"
   },
