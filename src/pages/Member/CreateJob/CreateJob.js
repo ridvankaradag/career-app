@@ -18,18 +18,22 @@ import FormInputOption from "../../../components/FormInputOption/FormInputOption
 
 function CreateJob() {
 
-    const [job, setJob] = useState(null);
+    const [jobs, setJobs] = useState([]);
     const [title, setTitle] = useState('');
     const [department, setDepartment] = useState('');
     const [detail, setDetail] = useState(EditorState.createEmpty());
 
     const handleSubmit = (e) => {
+        //console.log(jobs);
         e.preventDefault();
+        setJobs([...jobs,{id: jobs.length + 1, title: title, department: department}]);
+        //console.log(jobs);
     };
 
     const editorChange = (editorState) => {
         setDetail(editorState);
-        console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
+        //console.log(detail);
+       // console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())));
     };
 
     return (
