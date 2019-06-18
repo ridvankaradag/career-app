@@ -1,6 +1,6 @@
 import React, {Fragment, useState} from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import HeaderText from "../../../components/HeaderText/HeaderText";
+import HeaderTextLink from "../../../components/HeaderTextLink/HeaderTextLink";
 import Layout from "../../../components/Layout/Layout";
 import Header from "../../../components/Header/Header";
 import FlexWrapper from "../../../components/FlexWrapper/FlexWrapper";
@@ -9,20 +9,13 @@ import TableDefault from "../../../components/TableDefault/TableDefault";
 
 
 function JobList() {
-    const [jobs, setJobs] = useState([{id: 1, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 2, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 3, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 4, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 5, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 6, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 7, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 8, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 9, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 10, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'},
-                                      {id: 11, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'},
-                                      {id: 12, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'},
-                                      {id: 13, title: 'Data Engineer', department: 'Engineering', companyTitle: 'Company Title', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam'},
+    const [jobs, setJobs] = useState([{id: 1, title: 'Frontend Engineer – Customer Solutions', department: 'Engineering', companyTitle: 'glovo',location: 'Barcelona', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
+                                      {id: 2, title: 'Front-End Developer (HTML, CSS, Vue.js, Animation)', department: 'Engineering', companyTitle: 'limesharp', location: 'London, UK', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
+                                      {id: 3, title: 'Remote Senior VueJS Engineer', department: 'Engineering', companyTitle: 'codelitt', location: 'Mami, Florida', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
+                                      {id: 4, title: 'Senior Software Engineer / Architect', department: 'Engineering', companyTitle: 'grain', location: 'Singapore', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
+                                      {id: 5, title: 'Software Engineer', department: 'Engineering', companyTitle: 'smartpath', location: 'Atlanta, GA', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
                                     ]);
+    const [search,setSearch] = useState('');
 
     const removeJob = (id) => {
         if (id) {
@@ -30,16 +23,23 @@ function JobList() {
         }
     };
 
+    let filteredJobs = jobs.filter(
+        (job) => {
+            return job.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+        }
+    );
+
     return (
         <Fragment>
             <Header headerColor="#2c3e50">
                 <Layout>
-                    <HeaderText to="/">
+                    <HeaderTextLink to="/dashboard">
                         Jobs
-                    </HeaderText>
+                    </HeaderTextLink>
                 </Layout>
             </Header>
             <Layout>
+                <input className="input_search" type="text" value={search}  onChange={e => setSearch(e.target.value.substr(0,20))} placeholder="Search..."/>
                 <FlexWrapper>
                     <Column gap="12">
                         <FlexWrapper flexDirection="row">
@@ -58,19 +58,21 @@ function JobList() {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    
                                         {
-                                            jobs.map((job) =>(
-                                                <tr key={job.id}>
-                                                    <td>{job.id}</td>
-                                                    <td>{job.title}</td>
-                                                    <td>{job.department}</td>
-                                                    <td>{job.companyTitle}</td>
-                                                    <td>{job.description}</td>
-                                                    <td><Link to={{pathname: "/", job: job}}>Edit</Link></td>
-                                                    <td className="btn-delete" onClick={() => removeJob(job.id)}>Delete</td>
-                                                </tr>
-                                            ))
+                                            filteredJobs.map((job) =>{
+                                                return <tr key={job.id}>
+                                                <td>{job.id}</td>
+                                                <td>{job.title}</td>
+                                                <td>{job.department}</td>
+                                                <td>{job.companyTitle}</td>
+                                                <td>{job.description}</td>
+                                                <td><Link to={{pathname: "/", job: job}}>Edit</Link></td>
+                                                <td className="btn-delete" onClick={() => removeJob(job.id)}>Delete</td>
+                                            </tr>
+                                            })
                                         }
+                                        
                                     </tbody>
                                 </TableDefault>
                             }
