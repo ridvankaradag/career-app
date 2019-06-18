@@ -14,7 +14,7 @@ function Dashboard() {
         <Fragment>
             <Header headerColor="#2c3e50">
                 <Layout>
-                    <HeaderText to="/">
+                    <HeaderText>
                         Dashboard
                     </HeaderText>
                 </Layout>

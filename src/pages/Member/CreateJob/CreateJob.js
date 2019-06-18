@@ -7,7 +7,7 @@ import '../member.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Header from "../../../components/Header/Header";
 import Layout from "../../../components/Layout/Layout";
-import HeaderText from "../../../components/HeaderText/HeaderText";
+import HeaderTextLink from "../../../components/HeaderTextLink/HeaderTextLink";
 import FlexWrapper from "../../../components/FlexWrapper/FlexWrapper";
 import Column from "../../../components/Column/Column";
 import FormDefault from "../../../components/FormDefault/FormDefault";
@@ -40,9 +40,9 @@ function CreateJob() {
         <Fragment>
             <Header headerColor="#2c3e50">
                 <Layout>
-                    <HeaderText to="/">
+                    <HeaderTextLink to="/dashboard">
                         Post a Job
-                    </HeaderText>
+                    </HeaderTextLink>
                 </Layout>
             </Header>
             <Layout>
