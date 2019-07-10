@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment } from 'react';
 import Header from '../../components/Header/Header';
 import Layout from '../../components/Layout/Layout'
 import CategoryWrapper from '../../components/CategoryWrapper/CategoryWrapper';
@@ -11,7 +11,7 @@ import HeaderText from '../../components/HeaderText/HeaderText';
 import HeaderDescription from '../../components/HeaderDescription/HeaderDescription';
 
 class Home extends Component {
-    render() {
+    render() { 
         return (
             <Fragment>
                 <Header>

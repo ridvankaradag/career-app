@@ -11,9 +11,8 @@ const FormInputSelect = styled.select`
     font-weight: inherit;
     border: none;
     border-radius: 0.4rem;
-    -webkit-transition: box-shadow 300ms;
-    transition: box-shadow 300ms;
-    box-shadow: 0 8px 10px #0000000d;
+
+  
 `;
 
 export default FormInputSelect;

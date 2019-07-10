@@ -209,7 +209,7 @@ html, body {
   padding: 0;
 }
 
-.container {
+/*.container {
   padding: 20px 0;
   height: 100vh;
   width: 100%;
@@ -217,7 +217,7 @@ html, body {
   background-size: cover;
   color: #fff;
   font-family: "Comfortaa", "Helvetica", sans-serif;
-}
+}*/
 
 .login {
   max-width: 280px;
@@ -269,15 +269,7 @@ html, body {
   margin: 5px;
 }
 
-input {
-  height: 30px;
-  text-align: center;
-  margin: 5px 0px;
-  background: transparent;
-  border: none;
-  width: 100%;
-  color: white;
-}
+
 
 input:focus,
 button:focus {
@@ -285,11 +277,11 @@ button:focus {
 }
 
 input::-webkit-input-placeholder {
-  color: rgba(255,255,255,.4);
+  color: black;
 }
 
 input::-moz-placeholder {
-  color: rgba(255,255,255,.4);
+  color: black;
 }
 
 .call-to-action {
@@ -364,4 +356,87 @@ p a:hover {
 /*Jobs Page*/
 .btn-delete{
   cursor: pointer;
+}
+
+/*Create a Job Page*/
+@media (min-width: 1200px){
+  .container_create-job {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 992px){
+  .container_create-job {
+    max-width: 960px;
+  }
+}
+
+
+@media (min-width: 768px){
+  .container_create-job {
+    max-width: 720px;
+  }
+}
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.justify-content-center {
+  justify-content: center;
+  /* align-items: center; */
+  flex-direction: column;
+
+}
+
+
+.form-check{
+  position: relative;
+  display: block;
+  padding-left: 1.25rem;
+}
+.form-check-inline{
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-left: 0;
+  margin-right: .75rem;
+}
+
+.form-check, .form-check-inline {
+  margin-right: 1.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: .18rem;
+}
+.form-group {
+  margin-bottom: 1.6rem;
+}
+.form-group .form-check {
+    margin-top: .5rem;
+}
+
+.form-group>label {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+.form-check-label {
+  font-size: .9rem;
+  color: #5c6870;
+}
+.form-check-label {
+  margin-bottom: 0;
 }

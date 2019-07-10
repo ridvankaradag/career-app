@@ -9,15 +9,19 @@ import JobList from '../pages/Member/JobList/JobList';
 import CreateJob from '../pages/Member/CreateJob/CreateJob';
 import Register from '../pages/Member/Register/Register';
 import Login from '../pages/Member/Login/Login';
+import EditJob from '../pages/Member/EditJob/EditJob';
+import Test from '../pages/Member/Test/Test';
 
 const Router = () => (
     <BrowserRouter>
         <Switch>
             <Route path='/' component={Home} exact={true}/>
+            <Route path='/test' component={Test} exact={true}/>
             <Route path='/job/:id' component={JobDetail} exact={true}/>
             <Route path='/dashboard' component={Dashboard} exact={true}/>
             <Route path='/dashboard/departments' component={Departments} exact={true}/>
             <Route path='/dashboard/jobs' component={JobList} exact={true}/>
+            <Route path='/dashboard/jobs/:id/edit' component={EditJob} exact={true}/>
             <Route path='/dashboard/jobs/create' component={CreateJob} exact={true}/>
             <Route path='/dashboard/register' component={Register} exact={true}/>
             <Route path='/dashboard/login' component={Login} exact={true}/>
