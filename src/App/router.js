@@ -11,6 +11,7 @@ import Register from '../pages/Member/Register/Register';
 import Login from '../pages/Member/Login/Login';
 import EditJob from '../pages/Member/EditJob/EditJob';
 import Test from '../pages/Member/Test/Test';
+import Users from '../pages/Member/Users/Users';
 
 const Router = () => (
     <BrowserRouter>
@@ -19,6 +20,7 @@ const Router = () => (
             <Route path='/test' component={Test} exact={true}/>
             <Route path='/job/:id' component={JobDetail} exact={true}/>
             <Route path='/dashboard' component={Dashboard} exact={true}/>
+            <Route path='/dashboard/users' component={Users} exact={true}/>
             <Route path='/dashboard/departments' component={Departments} exact={true}/>
             <Route path='/dashboard/jobs' component={JobList} exact={true}/>
             <Route path='/dashboard/jobs/:id/edit' component={EditJob} exact={true}/>

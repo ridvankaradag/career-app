@@ -8,10 +8,26 @@ import PageSubTitle from "../../components/PageSubTitle/PageSubTitle";
 import PageContent from "../../components/PageContent/PageContent";
 import PageFooter from "../../components/PageFooter/PageFooter";
 import Button from "../../components/Button/Button";
+import { connect } from "react-redux";
+import { getJob } from "../../js/actions/index";
 
+
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getJob : id => dispatch(getJob(id))
+    };
+}
 class JobDetail extends Component {
+    componentDidMount(){
+        const { getJob  } = this.props;
+        getJob(this.props.match.params.id);
+        console.log(this.props)
+       
+  
+      }
     render(props) {
-        console.log(this.props.match.params.id);
+
         return (
             <Fragment>
                 <Header>
@@ -83,4 +99,4 @@ class JobDetail extends Component {
     }
 }
 
-export default JobDetail;
+export default connect (null, mapDispatchToProps)(JobDetail);

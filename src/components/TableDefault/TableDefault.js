@@ -7,6 +7,7 @@ const TableDefault = styled.table`
     border-collapse: collapse;
     box-shadow: 0 8px 10px #0000000d;
     background-color: #fff;
+    font-size: 12px;
     
     & > thead  th {
         color: #fff;

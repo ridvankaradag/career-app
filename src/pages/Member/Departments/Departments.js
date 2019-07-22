@@ -8,37 +8,74 @@ import FormInputDefault from "../../../components/FormInputDefault/FormInputDefa
 import FormInputButton from "../../../components/FormInputButton/FormInputButton";
 import FormDefault from "../../../components/FormDefault/FormDefault";
 import TableDefault from "../../../components/TableDefault/TableDefault";
+import { connect } from "react-redux"
+import { deleteDepartment } from "../../../js/actions/index";
+import { updateDepartment } from "../../../js/actions/index";
+import { addDepartment } from "../../../js/actions/index";
 
-function Departments() {
 
-    const [departments, setDepartments] = useState([{id: 1, name: 'Engineering' }, {id: 2, name: 'Product'}]);
+const mapStateToProps = state => {
+    return { 
+         departments_list: state.departments 
+    };
+};
+
+function mapDispatchToProps(dispatch) {
+    return {
+        deleteDepartment: id => dispatch(deleteDepartment(id)),
+        updateDepartment: updatedDepartment => dispatch(updateDepartment(updatedDepartment)),
+        addDepartment : newDept => dispatch(addDepartment(newDept))
+    };
+}
+
+function Departments(props) {
+    const { departments_list, deleteDepartment, updateDepartment, addDepartment, addJob } = props;
+    const departments = departments_list;
+    
+ 
+
+    //const [departments, setDepartments] = useState(departments_list);
     const [value, setValue] = useState('');
     const [update, setUpdate] = useState(null);
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!value) return false;
         if (update === null) {
-            setDepartments([...departments,{id: departments.length + 1, name: value}]);
-        }else {
-            const updatedDepartments = [...departments];
-            updatedDepartments.filter((x) => x.id === update)[0].name = value;
-            setDepartments(updatedDepartments);
+            const newDept = {};
+            newDept.id = departments.length + 1;
+            newDept.name = value;
+
+            addDepartment(newDept);
+           //setDepartments([...departments,{id: departments.length + 1, name: value}]);
+       }
+       else 
+       {
+            const updatedDepartment = {};
+            updatedDepartment.id = update.id;
+            updatedDepartment.name = value;
+
+            updateDepartment(updatedDepartment);
+
+            //const a = [...departments];
+            //a.filter((x) => x.id === update)[0].name = value;
+            //setDepartments(a);
+
             setUpdate(null);
-        }
-        setValue("");
+       }
+      setValue("");
     };
 
     const removeDepartment = (id) => {
-        if (id) {
-            setDepartments(departments.filter((x) => x.id !== id))
+        if (id) {  
+            deleteDepartment(id);
+            //setDepartments(departments.filter((x) => x.id !== id))
         }
     };
 
     const editDepartment = (department) => {
-            setUpdate(department.id);
-            setValue(department.name);
+        setUpdate(department);
+        setValue(department.name);
     };
 
     return (
@@ -101,4 +138,4 @@ function Departments() {
 
 }
 
-export default Departments;
+export default connect(mapStateToProps,mapDispatchToProps)(Departments);

@@ -7,6 +7,11 @@ const HeaderTextLink = styled(Link)`
   margin: 0 0 1rem 0;
   color: #fff;
   text-decoration: none;
+
+  :hover {
+    color: #fff;
+    text-decoration: none;
+  }
 `;
 
 export default HeaderTextLink;

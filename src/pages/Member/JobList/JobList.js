@@ -1,31 +1,45 @@
 import React, {Fragment, useState} from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import HeaderTextLink from "../../../components/HeaderTextLink/HeaderTextLink";
 import Layout from "../../../components/Layout/Layout";
 import Header from "../../../components/Header/Header";
 import FlexWrapper from "../../../components/FlexWrapper/FlexWrapper";
 import Column from "../../../components/Column/Column";
 import TableDefault from "../../../components/TableDefault/TableDefault";
+import { connect } from "react-redux";
+import { deleteJob } from "../../../js/actions/index";
+
+const mapStateToProps = state => {
+ //   console.log(state.jobsList);
+    return { 
+        jobsList: state.jobsList 
+    };
+};
 
 
-function JobList() {
-    const [jobs, setJobs] = useState([{id: 1, title: 'Frontend Engineer – Customer Solutions', department: 'Engineering', companyTitle: 'glovo',location: 'Barcelona', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 2, title: 'Front-End Developer (HTML, CSS, Vue.js, Animation)', department: 'Engineering', companyTitle: 'limesharp', location: 'London, UK', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 3, title: 'Remote Senior VueJS Engineer', department: 'Engineering', companyTitle: 'codelitt', location: 'Mami, Florida', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 4, title: 'Senior Software Engineer / Architect', department: 'Engineering', companyTitle: 'grain', location: 'Singapore', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                      {id: 5, title: 'Software Engineer', department: 'Engineering', companyTitle: 'smartpath', location: 'Atlanta, GA', typeOfPosition:'full-time', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam' },
-                                    ]);
+function mapDispatchToProps(dispatch) {
+    return {
+        deleteJob: id => dispatch(deleteJob(id))
+    };
+}
+
+function JobList(props) {
+    const { jobsList, deleteJob } = props;
+    const [jobs, setJobs] = useState(jobsList);
     const [search,setSearch] = useState('');
+   // const [jobsDeleted,setJobsDeleted] = useState([]);
 
     const removeJob = (id) => {
         if (id) {
-            setJobs(jobs.filter((x) => x.id !== id))
+            deleteJob(id);
+           setJobs(jobs.filter((x) => x.id !== id))
+            //console.log(jobsDeleted);
         }
     };
 
     let filteredJobs = jobs.filter(
         (job) => {
-            return job.title.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+            return job.position.toLowerCase().indexOf(search.toLowerCase()) !== -1;
         }
     );
 
@@ -51,7 +65,12 @@ function JobList() {
                                             <th>#</th>
                                             <th>Title</th>
                                             <th>Department</th>
-                                            <th>Company Title</th>
+                                            <th>Company Name</th>
+                                            <th>Company Email</th>
+                                            <th>Job Type</th>
+                                            <th>Salary</th>
+                                            <th>Website</th>
+                                            <th>Twitter</th>
                                             <th>Description</th>
                                             <th></th>
                                             <th></th>
@@ -63,9 +82,14 @@ function JobList() {
                                             filteredJobs.map((job) =>{
                                                 return <tr key={job.id}>
                                                 <td>{job.id}</td>
-                                                <td>{job.title}</td>
+                                                <td>{job.position}</td>
                                                 <td>{job.department}</td>
-                                                <td>{job.companyTitle}</td>
+                                                <td>{job.company_name}</td>
+                                                <td>{job.company_email}</td>
+                                                <td>{job.job_type}</td>
+                                                <td>{job.salary}</td>
+                                                <td>{job.company_website}</td>
+                                                <td>{job.company_twitter}</td>
                                                 <td>{job.description}</td>
                                                 <td><Link to={{pathname: "/", job: job}}>Edit</Link></td>
                                                 <td className="btn-delete" onClick={() => removeJob(job.id)}>Delete</td>
@@ -86,4 +110,4 @@ function JobList() {
 
 }
 
-export default JobList;
+export default connect(mapStateToProps, mapDispatchToProps)(JobList);

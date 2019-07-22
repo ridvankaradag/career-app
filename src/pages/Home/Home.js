@@ -10,8 +10,17 @@ import BoxSubTitle from '../../components/BoxSubtitle/BoxSubTitle';
 import HeaderText from '../../components/HeaderText/HeaderText';
 import HeaderDescription from '../../components/HeaderDescription/HeaderDescription';
 
+import { connect } from "react-redux";
+
+const mapStateToProps = state => {
+    return {
+        jobs : state.jobsList
+    };
+};
+
 class Home extends Component {
     render() { 
+        const { jobs } = this.props;
         return (
             <Fragment>
                 <Header>
@@ -26,18 +35,16 @@ class Home extends Component {
                     <CategoryWrapper>
                         <CategoryHeader>Product</CategoryHeader>
                         <BoxWrapper>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
+                            {
+                                jobs.map((job,key)=>(
+                                    <Box to={`job/${ job.id }`}>
+                                        <BoxTitle>{job.position}</BoxTitle>
+                                        <BoxSubTitle>{job.company_name}</BoxSubTitle>
+                                    </Box>
+                                ))
+
+                            }
+                        
                         </BoxWrapper>
                     </CategoryWrapper>
                     <CategoryWrapper>
@@ -76,4 +83,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default connect(mapStateToProps)(Home);

@@ -6,14 +6,12 @@ import { connect } from "react-redux";
 import uuidv1 from "uuid";
 import { addArticle } from "../../../js/actions/index";
 
+function mapDispatchToProps(dispatch) {
+  return {
+    addArticle: article => dispatch(addArticle(article))
+  };
+}
 
-
-
-  function mapDispatchToProps(dispatch) {
-    return {
-      addArticle: article => dispatch(addArticle(article))
-    };
-  }
 class Home extends Component {
     constructor() {
         super();

@@ -31,6 +31,10 @@ function Dashboard() {
                         <Box to="/dashboard/jobs/create">
                             <BoxTitle>Post a Job</BoxTitle>
                         </Box>
+                        <Box to="/dashboard/users">
+                            <BoxTitle>Users</BoxTitle>
+                        </Box>
+                    
                     </BoxWrapper>
                 </FlexWrapper>
             </Layout>

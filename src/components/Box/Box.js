@@ -16,6 +16,8 @@ const Box = styled(Link)`
     :hover {
     background-color: #f50057;
     color: #fff;
+    text-decoration: none;
+ 
     }
     :hover::after {
      width: 100%;
