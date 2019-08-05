@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from "react";
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
+import {Link} from "react-router-dom";
+import Avatar from "../../../assets/images/avatar.jpg";
 import '../member.css'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { convertToRaw } from 'draft-js';
@@ -89,11 +91,39 @@ function CreateJob(props) {
 
     return (
         <Fragment>
-            <Header headerColor="#2c3e50">
+           <Header headerColor="#d1d8e0">
                 <Layout>
-                    <HeaderTextLink to="/dashboard">
-                        Post a Job
-                    </HeaderTextLink>
+                    <div style={{height:`6rem`,position: 'relative', padding: `0 1.5rem`,}}>
+                        <div className="header_content">
+                            <div className="header_left"><Link to="/dashboard"><h4 style={{ color: '#f50057',marginTop:'inherit', fontSize: '3rem'}}>Departments</h4></Link></div>
+                            <div className="header_right">
+                                <ul>
+                                    <li className="icon">
+                                        <a className="user_info">
+                                            <img src={Avatar}></img>
+                                            <span>Elif Çilingir</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="navbar" >
+                        <ul className="menu">
+                            <li className="menu_item">
+                             <Link to="/dashboard/departments">Departments</Link>
+                            </li>
+                            <li className="menu_item">
+                                <Link to="/dashboard/jobs">Jobs</Link>
+                            </li>
+                            <li className="menu_item">
+                                <Link to="/dashboard/jobs/create">Post a Job</Link>
+                            </li>
+                            <li className="menu_item">
+                                <Link  to="/dashboard/users">Users</Link>
+                            </li>
+                        </ul>
+                    </div>
                 </Layout>
             </Header>
             <form onSubmit={handleSubmit}>
@@ -179,7 +209,7 @@ function CreateJob(props) {
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" value='Post your job' className="btn btn-success btn-lg btn-block mt-5 mb-5" />
+                            <input type="submit" value='Post' className="btn btn-primary btn-lg btn-block mt-5 mb-5" />
                         </div>
                     </div>
                 </div>
