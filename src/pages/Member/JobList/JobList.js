@@ -1,13 +1,14 @@
 import React, {Fragment, useState} from "react";
-import { BrowserRouter as Link } from "react-router-dom";
-import HeaderTextLink from "../../../components/HeaderTextLink/HeaderTextLink";
+import {Link} from "react-router-dom";
 import Layout from "../../../components/Layout/Layout";
 import Header from "../../../components/Header/Header";
-import FlexWrapper from "../../../components/FlexWrapper/FlexWrapper";
-import Column from "../../../components/Column/Column";
-import TableDefault from "../../../components/TableDefault/TableDefault";
 import { connect } from "react-redux";
 import { deleteJob } from "../../../js/actions/index";
+import Avatar from "../../../assets/images/avatar.jpg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPenAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const mapStateToProps = state => {
  //   console.log(state.jobsList);
@@ -45,66 +46,108 @@ function JobList(props) {
 
     return (
         <Fragment>
-            <Header headerColor="#2c3e50">
+              <Header headerColor="#d1d8e0">
                 <Layout>
-                    <HeaderTextLink to="/dashboard">
-                        Jobs
-                    </HeaderTextLink>
+                    <div style={{height:`6rem`,position: 'relative', padding: `0 1.5rem`,}}>
+                        <div className="header_content">
+                            <div className="header_left"><Link to="/dashboard"><h4 style={{ color: '#f50057',marginTop:'inherit', fontSize: '3rem'}}>Jobs</h4></Link></div>
+                            <div className="header_right">
+                                <ul>
+                                    <li className="icon">
+                                        <a className="user_info">
+                                            <img src={Avatar}></img>
+                                            <span>Elif Çilingir</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="navbar" >
+                        <ul className="menu">
+                            <li className="menu_item">
+                             <Link to="/dashboard/departments">Departments</Link>
+                            </li>
+                            <li className="menu_item">
+                                <Link to="/dashboard/jobs">Jobs</Link>
+                            </li>
+                            <li className="menu_item">
+                                <Link to="/dashboard/jobs/create">Post a Job</Link>
+                            </li>
+                            <li className="menu_item">
+                                <Link  to="/dashboard/users">Users</Link>
+                            </li>
+                        </ul>
+                    </div>
                 </Layout>
             </Header>
-            <Layout>
-                <input className="input_search" type="text" value={search}  onChange={e => setSearch(e.target.value.substr(0,20))} placeholder="Search..."/>
-                <FlexWrapper>
-                    <Column gap="12">
-                        <FlexWrapper flexDirection="row">
-                            {
-                                jobs.length > 0 &&
-                                <TableDefault>
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Title</th>
-                                            <th>Department</th>
-                                            <th>Company Name</th>
-                                            <th>Company Email</th>
-                                            <th>Job Type</th>
-                                            <th>Salary</th>
-                                            <th>Website</th>
-                                            <th>Twitter</th>
-                                            <th>Description</th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    
-                                        {
-                                            filteredJobs.map((job) =>{
-                                                return <tr key={job.id}>
-                                                <td>{job.id}</td>
-                                                <td>{job.position}</td>
-                                                <td>{job.department}</td>
-                                                <td>{job.company_name}</td>
-                                                <td>{job.company_email}</td>
-                                                <td>{job.job_type}</td>
-                                                <td>{job.salary}</td>
-                                                <td>{job.company_website}</td>
-                                                <td>{job.company_twitter}</td>
-                                                <td>{job.description}</td>
-                                                <td><Link to={{pathname: "/", job: job}}>Edit</Link></td>
-                                                <td className="btn-delete" onClick={() => removeJob(job.id)}>Delete</td>
-                                            </tr>
-                                            })
-                                        }
-                                        
-                                    </tbody>
-                                </TableDefault>
-                            }
-
-                        </FlexWrapper>
-                    </Column>
-                </FlexWrapper>
-            </Layout>
+            <div style={{    marginTop: `-1.5rem`,marginLeft: `0` }}>
+                <div style={{
+                    width: `100%`,
+                    padding: `1.5rem 3rem 0`,
+                    marginRight: `auto`,
+                    marginLeft: `auto`,
+                }}>
+                    <div className="row">
+                        <div className="col-auto">
+                            <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
+                            <div className="input-group mb-2">
+                                <div className="input-group-prepend">
+                                    <div className="input-group-text">
+                                        <FontAwesomeIcon icon={ faSearch }/> 
+                                    </div>
+                                </div>
+                            <input className="form-control text-muted" id="inlineFormInputGroup"  type="text" value={search}  onChange={e => setSearch(e.target.value.substr(0,20))} placeholder="Search"/>    
+                            </div>
+                        </div>
+                        <div className="col-lg-12">
+                                <div className="card transparent-card">
+                                    <div className="card-body p-0">
+                                    {
+                                        jobs.length > 0 &&
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Title</th>
+                                                    <th>Department</th>
+                                                    <th>Company Name</th>
+                                                    <th>Company Email</th>
+                                                    <th>Job Type</th>
+                                                    <th>Salary</th>
+                                                    <th>Website</th>
+                                                    <th>Twitter</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {
+                                                filteredJobs.map((job) =>{
+                                                    return <tr key={job.id}>
+                                                    <td>{job.id}</td>
+                                                    <td>{job.position}</td>
+                                                    <td>{job.department}</td>
+                                                    <td>{job.company_name}</td>
+                                                    <td>{job.company_email}</td>
+                                                    <td>{job.job_type}</td>
+                                                    <td>{job.salary}</td>
+                                                    <td>{job.company_website}</td>
+                                                    <td>{job.company_twitter}</td>
+                                                    <td><Link to={{pathname: "/", job: job}}><FontAwesomeIcon icon={faPenAlt} /></Link></td>
+                                                    <td className="trash" onClick={() => removeJob(job.id)}><FontAwesomeIcon icon={faTrash} /></td>
+                                                </tr>
+                                                })
+                                            }
+                                            </tbody>
+                                        </table>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </Fragment>
     );
 
