@@ -12,6 +12,7 @@ const Box = styled(Link)`
     width: calc(100% / 3);
     transition: .4s;
     position: relative;
+    margin: 20px 0;
     
     :hover {
     background-color: #f50057;
