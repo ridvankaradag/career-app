@@ -20,6 +20,7 @@ const mapStateToProps = state => {
 
 class Home extends Component {
     render() { 
+ 
         const { jobs } = this.props;
         return (
             <Fragment>
@@ -36,47 +37,22 @@ class Home extends Component {
                         <CategoryHeader>Product</CategoryHeader>
                         <BoxWrapper>
                             {
-                                jobs.map((job,key)=>(
-                                    <Box to={`job/${ job.id }`}>
-                                        <BoxTitle>{job.position}</BoxTitle>
-                                        <BoxSubTitle>{job.company_name}</BoxSubTitle>
-                                    </Box>
-                                ))
-
+                                jobs.map((job,key)=>{
+                                    let newTo = { 
+                                        pathname: `job/${ job.id }`, 
+                                        jobParams: {job} 
+                                      }
+                                      return <Box  to={newTo} key={key} >
+                                                <BoxTitle>{job.position}</BoxTitle>
+                                                <BoxSubTitle>{job.company_name}</BoxSubTitle>
+                                                </Box>
+                                                ;
+                                })
                             }
                         
                         </BoxWrapper>
                     </CategoryWrapper>
-                    <CategoryWrapper>
-                        <CategoryHeader>Product</CategoryHeader>
-                        <BoxWrapper>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                        </BoxWrapper>
-                    </CategoryWrapper>
-                    <CategoryWrapper>
-                        <CategoryHeader>Product</CategoryHeader>
-                        <BoxWrapper>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                            <Box to="job/data-engineer">
-                                <BoxTitle>Data Engineer</BoxTitle>
-                                <BoxSubTitle>Remote</BoxSubTitle>
-                            </Box>
-                        </BoxWrapper>
-                    </CategoryWrapper>
+                  
                 </Layout>
             </Fragment>
         );
