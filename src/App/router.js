@@ -26,7 +26,8 @@ const Router = () => (
             <Route path='/dashboard/jobs/:id/edit' component={EditJob} exact={true}/>
             <Route path='/dashboard/jobs/create' component={CreateJob} exact={true}/>
             <Route path='/dashboard/register' component={Register} exact={true}/>
-            <Route path='/dashboard/login' component={Login} exact={true}/>
+            <Route path='/login' component={Login} exact={true}/>
+            <Route path='/register' component={Register} exact={true}/>
         </Switch>
     </BrowserRouter>
 );
